@@ -19,18 +19,25 @@ namespace ForeverDigitalTaskTest.Controllers
             List<PostContent> posts = new List<PostContent>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
-                //HTTP GET
-                var responseTask = client.GetAsync("posts");
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                try
                 {
-                    var readTask = result.Content.ReadAsAsync<List<PostContent>>();
-                    readTask.Wait();
+                    client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
+                    //HTTP GET
+                    var responseTask = client.GetAsync("posts");
+                    responseTask.Wait();
 
-                    posts = readTask.Result;
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<PostContent>>();
+                        readTask.Wait();
+
+                        posts = readTask.Result;
+                    }
+                }
+                catch (Exception)
+                {
+                    return Ok(new HttpError("Something went wrong"));
                 }
             }
             if (!string.IsNullOrEmpty(searchKeyword))
