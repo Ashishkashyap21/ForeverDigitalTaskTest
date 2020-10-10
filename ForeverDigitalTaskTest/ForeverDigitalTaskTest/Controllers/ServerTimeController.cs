@@ -7,7 +7,7 @@ namespace ForeverDigitalTaskTest.Controllers
     {
         public IHttpActionResult Get()
         {
-            return Ok(DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
+            return Ok(new { ServerTime = DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture) });
         }
     }
 }

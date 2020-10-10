@@ -200,7 +200,6 @@
     <Compile Include="Controllers\JsonDataController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ServerTimeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DB\ForeverDigital.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderRequestDto.cs" />
     <Compile Include="Models\PostContent.cs" />
     <Compile Include="Models\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
